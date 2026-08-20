@@ -9,7 +9,10 @@ def add_block_to_content(content: str, domains: list[str], start_marker: str, en
         block_lines.append(f"0.0.0.0 {domain}")
     block_lines.append(end_marker)
 
+    content = remove_block_from_content(content, start_marker,end_marker)
+
     block_text = "\n".join(block_lines) + "\n"
+
     if content and not content.endswith('\n'):
         content += "\n"
     return content + block_text
