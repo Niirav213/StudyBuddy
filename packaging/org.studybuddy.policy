@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+
+<policyconfig>
+  <vendor>Nirav</vendor>
+  <action id="org.studybuddy.update_hosts">
+    <description>Allows running the privileged helper file</description>
+    <message>Authentication is required to run the privileged helper function.</message>
+    <icon_name>dialog-password</icon_name>
+    
+    <defaults>
+      <!-- Deny remote/unauthenticated users entirely -->
+      <allow_any>no</allow_any>
+      <!-- Deny inactive (background) users -->
+      <allow_inactive>no</allow_inactive>
+      <!-- Require admin password for the active logged-in user -->
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+
+    <annotate key="org.freedesktop.policykit.exec.path">/home/nirav/Projects/StudyBuddy/blocker/previleged_helper.py</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">false</annotate>
+  </action>
+</policyconfig>
