@@ -11,11 +11,12 @@ def test_update_block_of_hosts(tmp_path):
 
     # 2. ACTION: Run your function, but point it at the fake file!
     # Because we pass a string, we need to convert the tmp_path object using str()
-    update_block_of_hosts(new_content, target_file_path=str(fake_hosts_file))
+    result = update_block_of_hosts(new_content, target_file_path=str(fake_hosts_file))
 
     # 3. ASSERT: Read the fake file to see if the text was actually updated
-    result = fake_hosts_file.read_text()
-    assert result == new_content
+    content = fake_hosts_file.read_text()
+    assert content == new_content
+    assert result == 0
 
     # 4. ASSERT: Check that the permissions were correctly set to 644
     stat = os.stat(fake_hosts_file)

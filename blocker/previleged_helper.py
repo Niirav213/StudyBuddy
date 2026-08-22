@@ -1,10 +1,11 @@
 import os
 import tempfile
+import sys
 
 
 
 
-def update_block_of_hosts(content:str,target_file_path:str = '/etc/hosts'):
+def update_block_of_hosts(content:str,target_file_path:str = '/home/nirav/Projects/StudyBuddy/hosts_test.txt'):
 
     
     target_dir = os.path.dirname(os.path.abspath(target_file_path))
@@ -21,4 +22,11 @@ def update_block_of_hosts(content:str,target_file_path:str = '/etc/hosts'):
         print("TRY RUNNING IT WITH SUDO")
 
         os.remove(temp_path)
-    
+        return 1
+    return 0
+
+
+if __name__=="__main__":
+    content = sys.stdin.read()
+    result = update_block_of_hosts(content)
+    sys.exit(result)
