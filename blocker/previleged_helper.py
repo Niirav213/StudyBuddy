@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+#I am running this file by running chmod +x command
 import os
 import tempfile
 import sys
