@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "studybuddy"
+version = "0.1.0"
+description = "A focus/study app for Linux with website blocking, ambience audio, and a distraction-free reader"
+requires-python = ">=3.10"
+dependencies = [
+    # add real dependencies here as you use them, e.g.:
+    # "PyQt6",
+    # "yt-dlp",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*", "blocker*", "media*", "reader*", "assistant*", "gui*", "cli*"]

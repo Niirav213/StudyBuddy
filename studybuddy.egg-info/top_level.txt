@@ -1,0 +1,6 @@
+assistant
+blocker
+cli
+core
+gui
+media

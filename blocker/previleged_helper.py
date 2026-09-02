@@ -31,5 +31,9 @@ def update_block_of_hosts(content:str,target_file_path:str = '/etc/hosts'):
 
 if __name__=="__main__":
     content = sys.stdin.read()
-    result = update_block_of_hosts(content)
+    if len(sys.argv) > 1:
+        target = sys.argv[1]
+        result = update_block_of_hosts(content, target_file_path=target)
+    else:
+        result = update_block_of_hosts(content)
     sys.exit(result)
