@@ -1,5 +1,3 @@
-from base64 import encode
-from encodings import utf_16
 import subprocess
 import json
 from pathlib import Path
@@ -46,20 +44,18 @@ def fetch_playlist(playlist_url: str) -> list[dict]:
 def save_cache(videos: list[dict]) -> None:
 
 
+    json_file_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(json_file_path, "w", encoding='utf-8') as file:
 
-    with open(json_file_path, "a", encoding='utf-8') as file:
-
-        file.write(json.dump(videos) + '\n')
+        file.write(json.dumps(videos))
 
 
 
 def load_cache()->list[dict]:
-    output = []
-    with open(json_file_path, 'r', encoding='utf-8') as file:
+    try:
+        with open(json_file_path, 'r', encoding='utf-8') as file:
 
-        for line in file:
-            clean_line = line.strip()
-
-            if clean_line:
-                data_row = json.load(clean_line)
-                output.append(data_row)
+            output = json.load(file)
+        return output
+    except FileNotFoundError:
+        return []
