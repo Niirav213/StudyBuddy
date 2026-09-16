@@ -1,3 +1,4 @@
+from re import sub
 import subprocess
 import json
 from pathlib import Path
@@ -59,3 +60,21 @@ def load_cache()->list[dict]:
         return output
     except FileNotFoundError:
         return []
+
+
+def resolve_stream_urls(video_id: str)-> tuple[str, str]:
+
+    yt_url = f"https://www.youtube.com/watch?v={video_id}"
+
+
+    command = ['yt-dlp', '--get-url', yt_url]
+    try:
+        urls = subprocess.run(command, capture_output=True, text=True)
+        video_url, audio_url = urls.stdout.strip().split('\n')
+
+
+    except FileNotFoundError:
+        raise RuntimeError("yt-dlp not found — install it first")
+
+    
+    return (video_url, audio_url)
