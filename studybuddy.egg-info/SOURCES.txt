@@ -9,7 +9,10 @@ core/__init__.py
 core/session.py
 gui/__init__.py
 media/__init__.py
+media/player.py
+media/yt_playlist.py
 studybuddy.egg-info/PKG-INFO
 studybuddy.egg-info/SOURCES.txt
 studybuddy.egg-info/dependency_links.txt
+studybuddy.egg-info/requires.txt
 studybuddy.egg-info/top_level.txt
